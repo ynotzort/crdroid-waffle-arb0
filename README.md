@@ -11,7 +11,7 @@ The recipe and tooling for building your own crDroid 16 for `waffle` that
   SUSFS compiled into the kernel, plus NeoZygisk and AlwaysStrong on top.
   `MEETS_STRONG_INTEGRITY` verified.
 * **runs the OxygenOS stock camera**, via the sibling
-  [`oplus-camera-waffle`](../oplus-camera-waffle) repo: photo, video,
+  [`oplus-camera-waffle`](https://github.com/ynotzort/oplus-camera-waffle) repo: photo, video,
   portrait, Live Photo, all three rear lenses.
 
 Nothing proprietary is committed. Firmware blobs are extracted from an
@@ -92,8 +92,8 @@ LFS objects, and `xbl_config.img` is one of them.
 
 ```bash
 cd ~/src
-git clone <this repo> crdroid-waffle-arb0
-git clone <oplus-camera-waffle> oplus-camera-waffle    # or set OPLUSCAM_REPO
+git clone https://github.com/ynotzort/crdroid-waffle-arb0
+git clone https://github.com/ynotzort/oplus-camera-waffle    # or set OPLUSCAM_REPO
 ```
 
 ### 3. Get the ARB0 donor blobs
