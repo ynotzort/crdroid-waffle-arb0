@@ -35,6 +35,7 @@ scripts/
   arb0-donor.sh       extract the 4 ARB0 blobs from the donor zip into work/, verify hashes
   arb0-reapply.sh     swap them into vendor/oneplus/waffle and rewrite the SHA1 pins
   camera-apply.sh     the camera repo's tree edits (frameworks/*, hardware/oplus, device.mk)
+  denag.sh            disable the "crDroid needs your help!" donation notification
   status.sh           what state is the tree in (read-only)
   build.sh            brunch with ccache, logged to work/logs/, preflight at the end
   preflight.sh        THE GATE: ARB 0 + KSU in the packaged kernel, or it refuses
@@ -51,10 +52,11 @@ work/                 git-ignored: clones, blob stash, logs, copies of flashed b
 ```
 
 All of it is idempotent. Everything the scripts change in the Android tree is
-an **uncommitted working-tree edit** in four projects (`vendor/oneplus/waffle`,
-`kernel/oneplus/sm8650`, `device/oneplus/sm8650-common`, and the camera's
-five). `repo sync` reverts them - that is why `apply-all.sh` exists and why
-you never pass `--force-sync` to a sync of a tree you care about.
+an **uncommitted working-tree edit** in five projects (`vendor/oneplus/waffle`,
+`kernel/oneplus/sm8650`, `device/oneplus/sm8650-common`,
+`packages/apps/Settings`, and the camera's five). `repo sync` reverts them -
+that is why `apply-all.sh` exists and why you never pass `--force-sync` to a
+sync of a tree you care about.
 
 ---
 

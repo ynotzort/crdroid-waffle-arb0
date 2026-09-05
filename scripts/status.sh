@@ -37,9 +37,11 @@ else
   echo "  oplus-camera-waffle not found at $OPLUSCAM_REPO"
 fi
 
+"$REPO/scripts/denag.sh" --status
+
 echo "== working-tree changes in the touched projects =="
 for p in vendor/oneplus/$DEVICE kernel/oneplus/sm8650 device/oneplus/sm8650-common device/oneplus/$DEVICE \
-         frameworks/native frameworks/av frameworks/base hardware/oplus; do
+         frameworks/native frameworks/av frameworks/base hardware/oplus packages/apps/Settings; do
   n=$(git -C "$p" status --short 2>/dev/null | wc -l)
   printf '  %-34s %s\n' "$p" "$n changed/untracked"
 done
