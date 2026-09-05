@@ -6,7 +6,7 @@
 #
 # Memory: soong_build peaks near 28 GiB RSS on this tree. On a 32 GiB host that
 # needs real disk swap (ROM.md section 7); zram alone does not cover it.
-set -uo pipefail
+set -o pipefail
 . "$(dirname "$0")/../env.sh"
 TARGET=${1:-rom}
 LOG=$WORK/logs/build-$(date +%Y%m%d-%H%M%S)-$TARGET.log
@@ -16,9 +16,10 @@ ccache -M 50G >/dev/null 2>&1 || true
 {
   echo "=== $TARGET build start $(date -Is) ==="
   # shellcheck disable=SC1091
-  source build/envsetup.sh >/dev/null 2>&1
+  source build/envsetup.sh >/dev/null || { echo "!! envsetup failed"; exit 1; }
+  command -v brunch >/dev/null || { echo "!! brunch undefined after envsetup"; exit 1; }
   if [ "$TARGET" = bootimage ]; then
-    breakfast "$DEVICE" >/dev/null 2>&1 && m bootimage
+    breakfast "$DEVICE" >/dev/null && m bootimage
   else
     brunch "$DEVICE"
   fi
