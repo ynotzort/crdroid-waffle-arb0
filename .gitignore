@@ -1,0 +1,9 @@
+# Everything fetched or produced lives under work/: clones, the ARB0 blob
+# stash, build logs, pulled images. Nothing proprietary is committed.
+work/
+*.img
+*.zip
+*.apk
+*.log
+__pycache__/
+*.pyc
